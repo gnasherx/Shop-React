@@ -1,18 +1,37 @@
 const initialState = {
   user: null,
-  signupStatus: false,
-  signupError: null
+  signupError: null,
+  loginError: null
 };
 
 const authReduer = (state = initialState, action) => {
   switch (action.type) {
     case "CREATE_NEW_ACCOUNT":
-      const { user } = action;
-      return { ...state, user: user, signupStatus: true };
+      let { signupUser } = action;
+      return {
+        ...state,
+        user: signupUser
+      };
     case "FALIED-TO-CREATE-NEW-ACCOUNT":
-      console.log("Failed tp create new user");
-      const { error } = action;
-      return { ...state, signupStatus: false, signupError: error };
+      console.log("Failed to create new user");
+      const { signupError } = action;
+      return {
+        ...state,
+        signupError: signupError
+      };
+    case "CUSTOMER_LOGIN":
+      let { loginUser } = action;
+      return {
+        ...state,
+        user: loginUser
+      };
+    case "FAILED_CUSTOMRE_LOGIN":
+      const { loginError } = action;
+      return {
+        ...state,
+        loginError: loginError
+      };
+
     default:
       return state;
   }

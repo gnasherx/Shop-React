@@ -29,7 +29,7 @@ class PrivateRoute extends Component {
           ) : (
             <Redirect
               to={{
-                pathname: "/signup",
+                pathname: "/signin",
                 state: { from: renderProps.location }
               }}
             />

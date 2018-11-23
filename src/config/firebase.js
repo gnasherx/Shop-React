@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 var config = {
   apiKey: "AIzaSyASfahHeu0gMUYiRF4VvcktfaNJkXqnjxM",
@@ -9,6 +10,6 @@ var config = {
   storageBucket: "",
   messagingSenderId: "487395755797"
 };
-const firebaseRef = firebase.initializeApp(config);
+firebase.initializeApp(config);
 
-export default firebaseRef;
+export default firebase;
