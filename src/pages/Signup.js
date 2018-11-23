@@ -21,6 +21,12 @@ class Signup extends Component {
     this.props.createNewAccount(this.state);
   };
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.user) {
+      this.props.history.push("/");
+    }
+  }
+
   render() {
     let { firstName, lastName, email, password } = { ...this.state };
 

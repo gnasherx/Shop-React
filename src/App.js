@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Signup from "./pages/Signup";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
+import PrivateRoute from "./PrivateRoute";
 
 class App extends Component {
   render() {
@@ -9,7 +10,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/" component={Home} />
+          <PrivateRoute exact path="/" component={Home} />
         </Switch>
       </BrowserRouter>
     );
