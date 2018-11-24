@@ -48,7 +48,10 @@ class AddNewProducts extends Component {
             <div className="text-center">
               <Button
                 className="d-flex justify-content-center"
-                onClick={() => this.props.addProduct(this.state)}
+                onClick={() => {
+                  this.props.addProduct(this.state);
+                  this.setState({ image: "", name: "", price: 0 });
+                }}
               >
                 Add
               </Button>

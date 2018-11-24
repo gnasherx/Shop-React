@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { fetchAllProducts } from "../store/actions/productsActions";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 class Home extends Component {
   // constructor(props) {
@@ -34,8 +35,8 @@ class Home extends Component {
     let products = this.props.products.map((p, i) => {
       return (
         <div key={i} className="col-sm-12 col-md-6 col-lg-4 col-xl-4 pb-4">
-          <Link to={"/productDetails/" + i}>
-            <div className="card text-center">
+          <Link to={"/productDetails/" + p.productKey}>
+            <div className="card text-center ">
               <img className="card-img-top" src={p.image} alt="" />
               <div className="card-body">
                 <h5 className="card-title">{p.name}</h5>
@@ -48,9 +49,14 @@ class Home extends Component {
     });
 
     return (
-      <div className="container">
-        <div className="row">{products}</div>
-      </div>
+      <Fragment>
+        <div style={{ marginBottom: "80px" }}>
+          <Navbar />
+        </div>
+        <div className="container">
+          <div className="row">{products}</div>
+        </div>
+      </Fragment>
     );
   }
 }

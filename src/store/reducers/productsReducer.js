@@ -15,10 +15,9 @@ const productReducer = (state = initialState, action) => {
 
     case "FETCH_PRODUCT_ID_DETAILS":
       let { productIdDetails } = action;
-      console.log("productIdDetails: ", productIdDetails);
       return {
         ...state,
-        productIdDetails: productIdDetails
+        productIdDetails: { ...productIdDetails }
       };
     default:
       return state;

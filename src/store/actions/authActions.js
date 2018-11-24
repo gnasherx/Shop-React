@@ -42,3 +42,15 @@ export const customerLogin = user => dispatch => {
       dispatch({ type: "FAILED_CUSTOMRE_LOGIN", loginError: error });
     });
 };
+
+export const logout = () => dispatch => {
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+     dispatch({type: "LOGOUT_SUCCESS"})
+    })
+    .catch(function(error) {
+      console.log("Failed in logout, error is: ", error)
+    });
+};

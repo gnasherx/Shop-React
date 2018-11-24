@@ -8,21 +8,23 @@ export const fetchAllProducts = () => dispatch => {
     snapshot.forEach(product => {
       allProducts.push(product.val());
     });
-
     dispatch({ type: "GET_ALL_PRODUCTS", products: allProducts });
   });
 };
 
-export const fetchProductIdDetails = productId => dispatch => {
+export const fetchProductIdDetails = productKey => dispatch => {
   database
     .ref("products")
-    .orderByKey()
-    .equalTo(productId)
-    .once("value", snapshot => {
-      console.log("Snapshot: ", snapshot.val());
+    .orderByChild("productKey")
+    .equalTo(productKey)
+    .on("value", snapshot => {
+      let productData = null;
+      snapshot.forEach(function(data) {
+        productData = data.val();
+      });
       dispatch({
         type: "FETCH_PRODUCT_ID_DETAILS",
-        productIdDetails: snapshot.val()
+        productIdDetails: productData
       });
     });
 };

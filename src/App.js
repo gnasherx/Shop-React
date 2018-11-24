@@ -18,7 +18,7 @@ class App extends Component {
           <Route exact path="/admin" component={AddNewProduct} />
           <PrivateRoute
             exact
-            path="/productDetails/:productId"
+            path="/productDetails/:productKey"
             component={ProductDeatils}
           />
         </Switch>

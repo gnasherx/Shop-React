@@ -31,6 +31,9 @@ const authReduer = (state = initialState, action) => {
         ...state,
         loginError: loginError
       };
+    case "LOGOUT_SUCCESS":
+      console.log("Successfully logout");
+      return state;
 
     default:
       return state;
