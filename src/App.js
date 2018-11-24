@@ -6,6 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import Signin from "./pages/Signin";
 import ProductDeatils from "./pages/ProductDetails";
 import AddNewProduct from "./pages/admin/AddNewProduct";
+import Cart from "./pages/Cart";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/signin" component={Signin} />
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/admin" component={AddNewProduct} />
+          <PrivateRoute path="/cart" component={Cart} />
           <PrivateRoute
             exact
             path="/productDetails/:productKey"

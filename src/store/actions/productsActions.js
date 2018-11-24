@@ -4,7 +4,7 @@ const database = firebase.database();
 
 export const fetchAllProducts = () => dispatch => {
   let allProducts = [];
-  database.ref("products").once("value", snapshot => {
+  database.ref("products").on("value", snapshot => {
     snapshot.forEach(product => {
       allProducts.push(product.val());
     });

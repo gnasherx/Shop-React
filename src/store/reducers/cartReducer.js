@@ -1,5 +1,6 @@
 const initialState = {
-  cartItemCount: 0
+  cartItemCount: 0,
+  allCartItems: []
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -8,6 +9,12 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItemCount: action.cartItemCount
+      };
+    case "GET_ALL_PRODUCTS":
+      console.log("Successfully fetched all cart items");
+      return {
+        ...state,
+        allCartItems: action.allCartItems
       };
     default:
       return state;

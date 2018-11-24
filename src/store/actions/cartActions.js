@@ -11,3 +11,15 @@ export const getCartItemsCount = () => dispatch => {
     });
   });
 };
+
+export const fetchCartItems = () => dispatch => {
+  const currentUser = firebase.auth().currentUser.uid;
+  database.ref("cart/" + currentUser);
+  const allCartItems = [];
+  database.ref("cart/" + currentUser).on("value", snapshot => {
+    snapshot.forEach(product => {
+      allCartItems.push(product.val());
+    });
+    dispatch({ type: "GET_ALL_PRODUCTS", allCartItems: allCartItems });
+  });
+};
