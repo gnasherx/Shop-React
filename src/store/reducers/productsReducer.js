@@ -1,5 +1,6 @@
 const initialState = {
-  products: []
+  products: [],
+  productIdDetails: null
 };
 
 const productReducer = (state = initialState, action) => {
@@ -10,6 +11,14 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: products
+      };
+
+    case "FETCH_PRODUCT_ID_DETAILS":
+      let { productIdDetails } = action;
+      console.log("productIdDetails: ", productIdDetails);
+      return {
+        ...state,
+        productIdDetails: productIdDetails
       };
     default:
       return state;
