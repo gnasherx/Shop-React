@@ -3,9 +3,9 @@ const database = firebase.database();
 
 export const addProduct = product => dispatch => {
   let productKey = database.ref("products").push().key;
+  console.log("productKey: ", productKey);
   database
-    .ref("products")
-    .push(productKey)
+    .ref("products/" + productKey)
     .set({ ...product, productKey: productKey })
     .then(() =>
       dispatch({

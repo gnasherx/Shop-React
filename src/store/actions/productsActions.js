@@ -28,3 +28,35 @@ export const fetchProductIdDetails = productKey => dispatch => {
       });
     });
 };
+
+export const addToCart = product => dispatch => {
+  const currentUser = firebase.auth().currentUser.uid;
+
+  // Checking the product(key) is already in cart
+  let pk = null;
+  database
+    .ref("cart/" + currentUser)
+    .orderByChild("productKey")
+    .equalTo(product.productKey)
+    .once("value", snapshot => {
+      snapshot.forEach(function(data) {
+        pk = data.key;
+      });
+    });
+
+  //If product is not there in cart then add it
+  if (pk === null) {
+    console.log("PK: ", pk);
+    database
+      .ref("cart/" + currentUser + "/" + product.productKey)
+      .set(product)
+      .then(() => {
+        dispatch({ type: "ADDED_TO_CART" });
+      })
+      .catch(error => {
+        dispatch({ type: "FAILED_TO_ADD_PRODUCT_INTO_CART", error: error });
+      });
+  } else {
+    dispatch({ type: "PRODUCT_ALREADY_IN_CART", product: product });
+  }
+};

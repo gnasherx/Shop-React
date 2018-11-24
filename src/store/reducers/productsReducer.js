@@ -1,6 +1,7 @@
 const initialState = {
   products: [],
-  productIdDetails: null
+  productIdDetails: null,
+  inCart: []
 };
 
 const productReducer = (state = initialState, action) => {
@@ -18,6 +19,21 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         productIdDetails: { ...productIdDetails }
+      };
+    case "ADDED_TO_CART":
+      console.log("Successfully added  product to cart");
+      return state;
+    case "FAILED_TO_ADD_PRODUCT_INTO_CART":
+      console.log(
+        "Failed to add prodcut into cart, here is the error: ",
+        action.error
+      );
+      return state;
+    case "PRODUCT_ALREADY_IN_CART":
+      console.log("This product is already in your cart");
+      return {
+        ...state,
+        inCart: [...state.inCart, action.product.productKey]
       };
     default:
       return state;
