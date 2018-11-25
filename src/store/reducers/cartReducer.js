@@ -10,7 +10,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartItemCount: action.cartItemCount
       };
-    case "GET_ALL_PRODUCTS":
+    case "GET_ALL_CART_PRODUCTS":
       console.log("Successfully fetched all cart items");
       return {
         ...state,

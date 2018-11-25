@@ -20,6 +20,6 @@ export const fetchCartItems = () => dispatch => {
     snapshot.forEach(product => {
       allCartItems.push(product.val());
     });
-    dispatch({ type: "GET_ALL_PRODUCTS", allCartItems: allCartItems });
+    dispatch({ type: "GET_ALL_CART_PRODUCTS", allCartItems: allCartItems });
   });
 };

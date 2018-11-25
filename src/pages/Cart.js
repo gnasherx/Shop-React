@@ -8,6 +8,7 @@ class Cart extends Component {
     this.props.fetchCartItems();
   }
 
+ 
   render() {
     return (
       <Fragment>
